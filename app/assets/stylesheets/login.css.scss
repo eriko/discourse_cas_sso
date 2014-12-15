@@ -1,0 +1,133 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "bootstrap";
+
+
+
+.recaptchatable {
+  line-height:15px;
+  height:15px;
+}
+body {
+  padding-top: 40px;
+  position: relative;
+}
+.navbar-inverse {
+  background-color: #64933A;
+  background-image: none;
+  border-color: #999999;
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1) inset, -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .nav > li > a {
+  color: #ffffff;
+}
+
+.navbar .logo {
+  display: block;
+  float: right;
+  margin-left: 0px;
+  margin-top: 5px;
+  padding: 0 10px 0 0;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #64933A;
+  background-color: #64933A;
+}
+/*bs-docs css*/
+.bs-docs-sidenav {
+  width: 258px;
+}
+.bs-docs-sidenav {
+  background-color: #FFFFFF;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+  margin: 30px 0 0;
+  padding: 0;
+  width: 190px;
+}
+
+.bs-docs-sidenav > li > a {
+  border: 1px solid #E5E5E5;
+  display: block;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+}
+.bs-docs-sidenav > li:first-child > a {
+  border-radius: 6px 6px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  border: 0 none;
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1) inset, -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+  padding: 9px 15px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+.bs-docs-sidenav .icon-chevron-right {
+  float: right;
+  margin-right: -6px;
+  margin-top: 2px;
+  opacity: 0.25;
+}
+.bs-docs-sidenav > li > a:hover {
+  background-color: #F5F5F5;
+}
+/*
+.bs-docs-sidenav a:hover .icon-chevron-right {
+  opacity: 0.5;
+}
+
+.bs-docs-sidenav .active .icon-chevron-right, .bs-docs-sidenav .active a:hover .icon-chevron-right {
+  background-image: url("../img/glyphicons-halflings-white.png");
+  opacity: 1;
+}
+
+*/
+.bs-docs-sidenav.affix {
+  top: 40px;
+}
+.bs-docs-sidenav.affix-bottom {
+  bottom: 270px;
+  position: absolute;
+  top: auto;
+}
+
+section {
+  padding-top: 50px;
+}
+
+/*Footer */
+.footer {
+  background-color: #F5F5F5;
+  border-top: 1px solid #E5E5E5;
+  margin-top: 70px;
+  padding: 30px 0;
+  text-align: center;
+}
+.footer p {
+  color: #777777;
+  margin-bottom: 0;
+}
+.footer-links {
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+.muted {
+  color: #999999;
+}
