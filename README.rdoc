@@ -24,6 +24,8 @@ You will also need to set the cas server host in config/initializers/omniauth.rb
 
 Run the migration.  It will add a db (sqlite) to be used for the eventual SLO support.
 
+Edit the application.html.erb layout file to meet your organizations needs.  Bootstrap is available.
+
 
 Optional settings config/configation/defaults.rb
 You can activate the groups filtering and turn on or off the checking of the allow and deny groups independently. In the
@@ -37,7 +39,8 @@ You will also want to change the login failure.html.erb page and the application
 = Unfinished
 At this point there is no action an the CAS server sending out SLO requests when user logs out of cas or their session
 ends.  To do this will require that discourse adds a /sso/logout that accepts the payload that was sent in the original
-sso request.  This will log out just the single session attached to that cas TGT and ST.
+sso request.  This will log out just the single session attached to that cas TGT and ST. At this point I do not think
+this is possible to do
 
 
 

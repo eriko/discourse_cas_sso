@@ -5,7 +5,7 @@ class LoginController < ApplicationController
     cookies.signed[:query_string] = request.query_string
     referer = request.env["HTTP_REFERER"]
     cookies.signed[:referer] = referer
-    #binding.remote_pry
+    binding.remote_pry
     redirect_to '/auth/cas'
   end
 
@@ -26,14 +26,7 @@ class LoginController < ApplicationController
     sso.external_id = username # unique to your application
     sso.sso_secret = configatron.sso.secret
 
-    #if configatron.ssout.enable
-    #  login = Login.new
-    #  login.referer = cookies.signed[:referer]
-    #  login.query = cookies.signed[:query_string]
-    #  login.ticket = request.env["omniauth.auth"]['credentials']['ticket']
-    #  login.username = username
-    #  login.save
-    #end
+
 
     #if there are groups in the data returned by CAS see if we need
     #filter through the allow and deny groups
@@ -58,16 +51,8 @@ class LoginController < ApplicationController
     end
   end
 
-  #def single_sign_out
-  #  client = DiscourseApi::Client.new("https://commons.evergreen.edu")
-  #  client.api_key = configatron.api.key
-  #  client.api_username = configatron.api.key
-  #
-  #end
 
   def failure
-    #binding.remote_pry
-    #raise request.env["omniauth.auth"].to_yaml
   end
 
   protected
