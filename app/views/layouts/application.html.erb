@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <title>Get Help</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
   <!-- Le styles -->
@@ -14,39 +13,11 @@
 
 
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="../../assets/js/html5shiv.js"></script>
-  <script src="../../assets/js/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="/assets/favicon.ico">
-</head>
+ </head>
 
 <body>
 
-<header class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <a class="logo hidden-xs" href="http://www.evergreen.edu"><%= image_tag "evergreen.png" %> </a>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"/></span>
-        <span class="icon-bar"/></span>
-        <span class="icon-bar"/></span>
-      </button>
 
-      <%= link_to params[:support_area] ?  @owner_title[params[:support_area]] :"Computing and Communications" , "http://www.evergreen.edu/computing",  :class => "navbar-brand"%>
-    </div>
-
-    <!--/.navbar-collapse -->
-  </div>
-</header>
 
 <div class="container" id="content">
   <p class="notice"><%= notice %></p>
@@ -54,15 +25,7 @@
   <%= yield %>
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <p><a href="http://www.evergreen.edu">The Evergreen State College</a> | 2700 Evergreen Parkway NW, Olympia, Washington 98505</p>
-    <ul class="footer-links">
-      <li><a href="http://help.evergreen.edu">Site Contact</a></li>
-    </ul>
-  </div>
-  <div id="footnotes_holder" class="container"></div>
-</footer>
+
 
 </body>
 
