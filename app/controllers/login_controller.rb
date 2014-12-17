@@ -5,7 +5,6 @@ class LoginController < ApplicationController
     cookies.signed[:query_string] = request.query_string
     referer = request.env["HTTP_REFERER"]
     cookies.signed[:referer] = referer
-    binding.remote_pry
     redirect_to '/auth/cas'
   end
 
