@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/auth/:provider/callback" => "login#create"
+  get "/auth/:provider/callback" => "login#create" , :as => :signing
   get "/auth/failure" => "login#failure"
 
   get 'login/login' => 'login#login'
