@@ -5,7 +5,9 @@ class LoginController < ApplicationController
     cookies.signed[:query_string] = request.query_string
     referer = request.env["HTTP_REFERER"]
     cookies.signed[:referer] = referer
-    redirect_to signin
+    logger.info "the query_string is #{cookies.signed[:query_string]}"
+    logger.info "the referer is #{cookies.signed[:referer]}"
+    redirect_to signin_path :cas
   end
 
   def create
