@@ -34,16 +34,15 @@ class LoginController < ApplicationController
     #filter through the allow and deny groups
     allowed_groups = true
     denied_groups = false
+    binding.remote_pry
 
     if configatron.filter_by_groups
       #if there are groups in the data returned by CAS see if we need
       #filter through the allow and deny groups
-      allowed_groups = true
-      denied_groups = false
       if request.env["omniauth.auth"][:extra][configatron.sso.groups.name]
-        users_groups = request.env["omniauth.auth"][:extra]['Groups'].split(', ')
-        allowed_groups = allowed_group(users_groups) if configatron.sso.groups.allow
-        denied_groups = denied_group(users_groups) if configatron.sso.groups.deny
+        users_groups = request.env["omniauth.auth"][:extra][configatron.sso.groups.name].tr('][','').split(', ')
+        allowed_groups = configatron.sso.groups.allow ? allowed_group(users_groups) : true
+        denied_groups = configatron.sso.groups.deny ? denied_group(users_groups) : false
       end
     end
     if allowed_groups && !denied_groups
