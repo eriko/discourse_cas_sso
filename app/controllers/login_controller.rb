@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
+  require 'uri'
 
   def login
     cookies.delete :query_string
@@ -11,7 +12,7 @@ class LoginController < ApplicationController
   end
 
   def create
-    uri = Addressable::URI.parse(cookies.signed[:referer])
+    uri = URI.parse(cookies.signed[:referer])
     username = request.env["omniauth.auth"][:uid]
     email = request.env["omniauth.auth"][:extra][configatron.cas.email_attribute]
     if request.env["omniauth.auth"][:extra][configatron.cas.name_attribute]
@@ -46,7 +47,7 @@ class LoginController < ApplicationController
       end
     end
     if allowed_groups && !denied_groups
-      redirect_to sso.to_url("#{uri.scheme}:////#{uri.host}#{configatron.sso.login.path}")
+      redirect_to sso.to_url("#{uri.scheme}:#{uri.host}#{configatron.sso.login.path}")
     else
       redirect_to failure
     end
