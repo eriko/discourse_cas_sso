@@ -34,7 +34,6 @@ class LoginController < ApplicationController
     #filter through the allow and deny groups
     allowed_groups = true
     denied_groups = false
-    binding.remote_pry
 
     if configatron.filter_by_groups
       #if there are groups in the data returned by CAS see if we need
