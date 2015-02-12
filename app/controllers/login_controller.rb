@@ -39,15 +39,17 @@ class LoginController < ApplicationController
       #if there are groups in the data returned by CAS see if we need
       #filter through the allow and deny groups
       if request.env["omniauth.auth"][:extra][configatron.sso.groups.name]
+        logger.info request.env["omniauth.auth"][:extra][configatron.sso.groups.name]
         users_groups = request.env["omniauth.auth"][:extra][configatron.sso.groups.name].tr('][','').split(', ')
         allowed_groups = configatron.sso.groups.allow ? allowed_group(users_groups) : true
         denied_groups = configatron.sso.groups.deny ? denied_group(users_groups) : false
       end
     end
+    logger.info "allowed_groups #{allowed_groups} && !denied_groups #{!denied_groups}"
     if allowed_groups && !denied_groups
       redirect_to sso.to_url("#{uri.scheme}://#{uri.host}#{configatron.sso.login.path}")
     else
-      redirect_to failure
+      render template: 'login/failure'
     end
   end
 
@@ -62,14 +64,16 @@ class LoginController < ApplicationController
     allowed_set = Set.new(configatron.sso.groups.allow_list.split('|'))
     users_set = Set.new(users_groups)
     #is there and intersection in the groups
-    (allowed_set & users_set).empty?
+    logger.info "allow_groups #{(allowed_set & users_set).to_a.to_s} empty? #{(allowed_set & users_set).empty?} "
+    !(allowed_set & users_set).empty?
   end
 
   def denied_group(users_groups)
     denied_set = Set.new(configatron.sso.groups.deny_list.split('|'))
     users_set = Set.new(users_groups)
     #is there and intersection in the groups
-    !(denied_set & users_set).empty?
+    logger.info "denied_group #{(allowed_set & users_set).to_a.to_s}  empty? #{(allowed_set & users_set).empty?} "
+    (denied_set & users_set).empty?
   end
 
   def after_create_account(user, auth)
