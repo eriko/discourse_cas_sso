@@ -15,8 +15,6 @@ class LoginController < ApplicationController
     uri = URI.parse(cookies.signed[:referer])
     username = request.env["omniauth.auth"][:uid]
     email = request.env["omniauth.auth"][:extra][configatron.cas.email_attribute]
-    avatarUrl = request.env["omniauth.auth"][:extra][configatron.cas.avatar_url_attribute]
-    avatarForceUpdate = request.env["omniauth.auth"][:extra][configatron.cas.avatar_force_update_attribute]
     
     if request.env["omniauth.auth"][:extra][configatron.cas.name_attribute]
       name = request.env["omniauth.auth"][:extra][configatron.cas.name_attribute].split(',').reverse.each { |x| x.strip }.join(' ')
@@ -30,8 +28,15 @@ class LoginController < ApplicationController
     sso.username = username
     sso.external_id = username # unique to your application
     sso.sso_secret = configatron.sso.secret
-    sso.avatar_url = avatarUrl
-    sso.avatar_force_update = avatarForceUpdate
+
+    # Process and send avatars if enabled
+    if configatron.cas.avatar_enabled
+      avatarUrl = request.env["omniauth.auth"][:extra][configatron.cas.avatar_url_attribute]
+      avatarForceUpdate = request.env["omniauth.auth"][:extra][configatron.cas.avatar_force_update_attribute]
+      
+      sso.avatar_url = avatarUrl
+      sso.avatar_force_update = avatarForceUpdate
+    end
 
     #if there are groups in the data returned by CAS see if we need
     #filter through the allow and deny groups
