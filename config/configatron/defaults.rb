@@ -11,6 +11,8 @@ configatron.sso.secret = '83IC~q<ITI#15n(6f515sw5crA?lF&'
 
 configatron.cas.email_attribute = 'mail'    # 'UserPrincipalName'
 configatron.cas.name_attribute = 'nickname' # 'Name'
+configatron.cas.avatar_url_attribute = 'photo'
+configatron.cas.avatar_force_update_attribute = true
 
 configatron.filter_by_groups = false
 configatron.sso.groups.name = 'Groups'
