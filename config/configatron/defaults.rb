@@ -9,8 +9,14 @@
 configatron.sso.login.path = '/session/sso_login'
 configatron.sso.secret = '83IC~q<ITI#15n(6f515sw5crA?lF&'
 
-configatron.cas.email_attribute = 'mail'    # 'UserPrincipalName'
-configatron.cas.name_attribute = 'nickname' # 'Name'
+configatron.cas.email_attribute = 'mail'              # CAS attribute containing user's e-mail. Example: 'UserPrincipalName'
+configatron.cas.name_attribute = 'nickname'           # CAS attribute containing user's username. Example: 'Name'
+
+configatron.cas.avatar_enabled = false		      # Specifies whether avatars should be consumed and provided to Discourse.
+configatron.cas.avatar_url_attribute = 'photo'        # CAS attribute containing user's photo. Example: 'jpegPhoto'
+configatron.cas.avatar_force_update_attribute = true  # Discourse parameter specifying whether avatar should be re-downloaded if cached.
+                                                      # Discourse does not re-download avatars that have already been downloaded from the same URL.
+                                                      # See: https://github.com/discourse/discourse/pull/2670
 
 configatron.filter_by_groups = false
 configatron.sso.groups.name = 'Groups'
