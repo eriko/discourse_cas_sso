@@ -39,6 +39,10 @@ configuration also.
 
 You will also want to change the login failure.html.erb page and the application.html.erb layout to suit your organization.
 
+= Thanks
+Avatar/photo functionality was written by @jankaltoun .
+ 
+
 = Unfinished
 At this point there is no action an the CAS server sending out SLO requests when user logs out of cas or their session
 ends.  To do this will require that discourse adds a /sso/logout that accepts the payload that was sent in the original
