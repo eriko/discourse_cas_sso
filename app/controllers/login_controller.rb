@@ -6,13 +6,10 @@ class LoginController < ApplicationController
     cookies.signed[:query_string] = request.query_string
     referer = request.env["HTTP_REFERER"]
     cookies.signed[:referer] = referer
-    logger.error "the query_string is #{cookies.signed[:query_string]}"
-    logger.error "the referer is #{cookies.signed[:referer]}"
     redirect_to signin_path :cas
   end
 
   def create
-    uri = URI.parse(cookies.signed[:referer])
     username = request.env["omniauth.auth"][:uid]
     email = request.env["omniauth.auth"][:extra][configatron.cas.email_attribute]
     
@@ -55,7 +52,7 @@ class LoginController < ApplicationController
     end
     logger.error "allowed_groups #{allowed_groups} && !denied_groups #{!denied_groups}"
     if allowed_groups && !denied_groups
-      redirect_to sso.to_url("#{uri.scheme}://#{uri.host}#{configatron.sso.login.path}")
+      redirect_to sso.return_sso_url
     else
       render template: 'login/failure'
     end
