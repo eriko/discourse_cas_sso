@@ -4,8 +4,6 @@ class LoginController < ApplicationController
   def login
     cookies.delete :query_string
     cookies.signed[:query_string] = request.query_string
-    referer = request.env["HTTP_REFERER"]
-    cookies.signed[:referer] = referer
     redirect_to signin_path :cas
   end
 
@@ -18,13 +16,13 @@ class LoginController < ApplicationController
     else
       name = username
     end
-
     sso = SingleSignOn.parse(cookies.signed[:query_string], configatron.sso.secret)
     sso.email = email
     sso.name = name
     sso.username = username
     sso.external_id = username # unique to your application
     sso.sso_secret = configatron.sso.secret
+    sso.sso_url = sso.return_sso_url
 
     # Process and send avatars if enabled
     if configatron.cas.avatar_enabled
@@ -52,7 +50,7 @@ class LoginController < ApplicationController
     end
     logger.error "allowed_groups #{allowed_groups} && !denied_groups #{!denied_groups}"
     if allowed_groups && !denied_groups
-      redirect_to sso.return_sso_url
+      redirect_to sso.to_url
     else
       render template: 'login/failure'
     end
