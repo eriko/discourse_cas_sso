@@ -31,11 +31,7 @@ Edit the application.html.erb layout file to meet your organizations needs.  Boo
 
 
 Optional settings config/configation/defaults.rb
-You can activate the groups filtering and turn on or off the checking of the allow and deny groups independently. In the
-case you are using Active Directory as the backend to a Jasig CAS server the groups information will be in the form
- of LDAP groups.  You mileage may vary with other combinations.  You may also have to get your CAS administrator to
-activate sending groups information.  The name of the attribute used to access the groups is based on the above
-configuration also.
+You can activate the groups filtering and turn on or off the checking of the allow and deny groups independently. In the case you are using Active Directory as the backend to a Jasig CAS server the groups information will be in the form of LDAP groups.  You mileage may vary with other combinations.  You may also have to get your CAS administrator to activate sending groups information.  The name of the attribute used to access the groups is based on the above configuration also.
 
 You will also want to change the login failure.html.erb page and the application.html.erb layout to suit your organization.
 
