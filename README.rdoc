@@ -10,7 +10,15 @@ create to members of certain groups.  Deny overrides Allow in the configureation
 risk is a little bit less but not great.
 
 
-= Setup
+= Configuration
+
+==CAS server setup
+===Required Values
+You CAS server will need to return at minimum a username and a email address.  
+===Optional Values
+If you want to use the groups and/or the photo functionality the server will also need to return those values
+
+==cas_sso application setup.
 There are two places that you need to enter configuration information.  The first is in config/configation/defaults.rb .
 There you will need to set the
 
@@ -31,11 +39,7 @@ Edit the application.html.erb layout file to meet your organizations needs.  Boo
 
 
 Optional settings config/configation/defaults.rb
-You can activate the groups filtering and turn on or off the checking of the allow and deny groups independently. In the
-case you are using Active Directory as the backend to a Jasig CAS server the groups information will be in the form
- of LDAP groups.  You mileage may vary with other combinations.  You may also have to get your CAS administrator to
-activate sending groups information.  The name of the attribute used to access the groups is based on the above
-configuration also.
+You can activate the groups filtering and turn on or off the checking of the allow and deny groups independently. In the case you are using Active Directory as the backend to a Jasig CAS server the groups information will be in the form of LDAP groups.  You mileage may vary with other combinations.  You may also have to get your CAS administrator to activate sending groups information.  The name of the attribute used to access the groups is based on the above configuration also.
 
 You will also want to change the login failure.html.erb page and the application.html.erb layout to suit your organization.
 
