@@ -9,10 +9,10 @@ class LoginController < ApplicationController
 
   def create
     username = request.env["omniauth.auth"][:uid]
-    email = request.env["omniauth.auth"][:extra][configatron.cas.email_attribute]
+    email = request.env["omniauth.auth"][configatron.cas.attributes_hash][configatron.cas.email_attribute]
     
-    if request.env["omniauth.auth"][:extra][configatron.cas.name_attribute]
-      name = request.env["omniauth.auth"][:extra][configatron.cas.name_attribute].split(',').reverse.each { |x| x.strip }.join(' ')
+    if request.env["omniauth.auth"][configatron.cas.attributes_hash][configatron.cas.name_attribute]
+      name = request.env["omniauth.auth"][configatron.cas.attributes_hash][configatron.cas.name_attribute].split(',').reverse.each { |x| x.strip }.join(' ')
     else
       name = username
     end
@@ -23,6 +23,10 @@ class LoginController < ApplicationController
     sso.external_id = username # unique to your application
     sso.sso_secret = configatron.sso.secret
     sso.sso_url = sso.return_sso_url
+
+    if configatron.custom_field.username
+      sso.custom_fields["orig_username"] = username
+    end
 
     # Process and send avatars if enabled
     if configatron.cas.avatar_enabled
