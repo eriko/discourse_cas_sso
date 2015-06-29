@@ -27,6 +27,7 @@ These are the name of the attribute in the cas data. This is particular to you c
 and you will need to talk to your CAS adminstrator to find out what they are and possibly to active sending them.
 * configatron.cas.email_attribute - CAS attribute containing user's e-mail. Example: 'mail' or 'UserPrincipalName'
 * configatron.cas.name_attribute - CAS attribute containing user's username. Example: 'nickname' or 'Name'
+* configatron.cas.attributes_hash = location that omniauth-cas stores the above two attributes.  Example: :extra or :info
 * configatron.cas.avatar_enabled - Specifies whether avatars should be consumed and provided to Discourse.
 * configatron.cas.avatar_url_attribute - CAS attribute containing user's photo. Example: 'jpegPhoto'
 * configatron.cas.avatar_force_update_attribute -  Discourse parameter specifying whether avatar should be re-downloaded if cached. Discourse does not re-download avatars that have already been downloaded from the same URL. See: https://github.com/discourse/discourse/pull/2670
