@@ -9,6 +9,21 @@ create to members of certain groups.  Deny overrides Allow in the configureation
 *All discourse instances need to use the same sso secret which is not a great thing. If you control all instances is the
 risk is a little bit less but not great.
 
+==Perquisites
+ * Functioning CAS server that returns username and email address
+ * CAS server is using SSL (for testing you can disable this see [here][1])
+ * Read through the first post of [this][2] the Official Single-Sign-On for Discourse
+
+==How it works when setup is:
+
+ 1. You hit the login button on your discourse site or the site is set to require login to access.
+ 2. Discourse packages a payload up containing the url of the discourse site to return to and and light encryption key.
+ 3. Your browsers is now redirected to the SSO url configured in discourse and the above package is sent allong.
+ 4. The discourse_cas_sso app receives the package and stores it and redirects you to the CAS server.
+ 5. When you return to the discourse_cas_sso app there is a package of data from the CAS that lets discourse_cas_sso know that you are logged and at minimum your email address and username.
+ 6. The email address and username along with other information is packaged up using the encryption key send by discourse and sent back to the discourse using the return url from the original package.
+ 7. Discourse uses this information to either log the person in by matching the email address or creates a new user with this information and logs them in.
+
 
 = Configuration
 
