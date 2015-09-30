@@ -39,7 +39,7 @@ There you will need to set the
 
 * configatron.sso.secret to the value that was set in the discourse(s) instance you are useing
 These are the name of the attribute in the cas data. This is particular to you configuration
-and you will need to talk to your CAS adminstrator to find out what they are and possibly to active sending them.
+and you will need to talk to your CAS administrator to find out what they are and possibly to active sending them.
 * configatron.cas.email_attribute - CAS attribute containing user's e-mail. Example: 'mail' or 'UserPrincipalName'
 * configatron.cas.name_attribute - CAS attribute containing user's username. Example: 'nickname' or 'Name'
 * configatron.cas.attributes_hash = location that omniauth-cas stores the above two attributes.  Example: :extra or :info
