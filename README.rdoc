@@ -69,5 +69,13 @@ ends.  To do this will require that discourse adds a /sso/logout that accepts th
 sso request.  This will log out just the single session attached to that cas TGT and ST. At this point I do not think
 this is possible to do
 
+One partial work around was suggested by @ramanbuttar 
+
+Go to `Settings` -> `Users`
+Change `logout_redirect` to https://sso.example.com/logout?service=http://discourse.example.com
+
+This at least logs the user out of CAS when they log out of discourse 
+
+
 
 
