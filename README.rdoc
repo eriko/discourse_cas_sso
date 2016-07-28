@@ -11,8 +11,8 @@ risk is a little bit less but not great.
 
 ==Perquisites
  * Functioning CAS server that returns username and email address
- * CAS server is using SSL (for testing you can disable this see [here][1])
- * Read through the first post of [this][2] the Official Single-Sign-On for Discourse
+ * CAS server is using SSL (for testing you can disable this see https://github.com/dlindahl/omniauth-cas disable_ssl_verification)
+ * Read through the first post of the Official Single-Sign-On for Discourse here https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045
 
 ==How it works when setup is:
 
