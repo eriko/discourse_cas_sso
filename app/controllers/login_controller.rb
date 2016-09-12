@@ -20,6 +20,7 @@ class LoginController < ApplicationController
     sso.email = email
     sso.name = name
     sso.username = username
+    sso.suppress_welcome_message = configatron.sso.suppress_welcome_message
     sso.external_id = username # unique to your application
     sso.sso_secret = configatron.sso.secret
     sso.sso_url = sso.return_sso_url

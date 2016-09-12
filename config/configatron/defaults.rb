@@ -11,6 +11,8 @@
 configatron.sso.login.path = '/session/sso_login'
 configatron.sso.secret = 'ToTX`#TLy@ioR^exPKb@&sfyD'
 
+configatron.sso.suppress_welcome_message = false
+
 configatron.cas.email_attribute = 'UserPrincipalName'    # CAS attribute containing user's e-mail. Example: 'UserPrincipalName'
 configatron.cas.name_attribute = 'Name' # CAS attribute containing user's username. Example: 'Name'
 
