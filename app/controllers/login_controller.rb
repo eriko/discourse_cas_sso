@@ -47,13 +47,17 @@ class LoginController < ApplicationController
       #if there are groups in the data returned by CAS see if we need
       #filter through the allow and deny groups
       if request.env["omniauth.auth"][:extra][configatron.sso.groups.name]
-        logger.error request.env["omniauth.auth"][:extra][configatron.sso.groups.name]
         users_groups = request.env["omniauth.auth"][:extra][configatron.sso.groups.name].tr('][','').split(', ')
         allowed_groups = configatron.sso.groups.allow ? allowed_group(users_groups) : true
         denied_groups = configatron.sso.groups.deny ? denied_group(users_groups) : false
+      else
+         # The user returned no groups so if we are testing for allowed groups they are not a valid user.
+        allowed_groups = configatron.sso.groups.allow ? false : true
+        #if we are testing for denied groups they will success
+        denied_groups = configatron.sso.groups.deny ? true : false
       end
     end
-    logger.error "allowed_groups #{allowed_groups} && !denied_groups #{!denied_groups}"
+    #logger.error "allowed_groups #{allowed_groups} && !denied_groups #{!denied_groups}"
     if allowed_groups && !denied_groups
       redirect_to sso.to_url
     else
@@ -71,16 +75,16 @@ class LoginController < ApplicationController
   def allowed_group(users_groups)
     allowed_set = Set.new(configatron.sso.groups.allow_list.split('|'))
     users_set = Set.new(users_groups)
-    #is there and intersection in the groups
-    logger.error "allow_groups #{(allowed_set & users_set).to_a.to_s} empty? #{(allowed_set & users_set).empty?} "
+    #is there an intersection in the groups
+    logger.info "inside allow_groups #{(allowed_set & users_set).to_a.to_s} empty? #{(allowed_set & users_set).empty?} "
     !(allowed_set & users_set).empty?
   end
 
   def denied_group(users_groups)
     denied_set = Set.new(configatron.sso.groups.deny_list.split('|'))
     users_set = Set.new(users_groups)
-    #is there and intersection in the groups
-    logger.error "denied_group #{(allowed_set & users_set).to_a.to_s}  empty? #{(allowed_set & users_set).empty?} "
+    #is there an intersection in the groups
+    logger.info "inside denied_group #{(allowed_set & users_set).to_a.to_s}  empty? #{(allowed_set & users_set).empty?} "
     (denied_set & users_set).empty?
   end
 
