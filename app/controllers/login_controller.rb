@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
   require 'uri'
+  require './lib/single_sign_on.rb'
 
   def login
     cookies.delete :query_string
