@@ -61,6 +61,25 @@ You will also want to change the login failure.html.erb page and the application
 
 = Thanks
 Avatar/photo functionality was written by @jankaltoun .
+
+= Untested by me. Written by @sudoman
+nginx config.
+        location /sso {
+                proxy_pass http://localhost:3001/;
+                proxy_set_header Host $http_host;
+                proxy_http_version 1.1;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto https;
+        }
+        location ~ ^/auth/cas {
+                proxy_pass http://localhost:3001$1;
+                proxy_set_header Host $http_host;
+                proxy_http_version 1.1;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto https;
+        }
  
 
 = Unfinished
