@@ -26,6 +26,8 @@ class LoginController < ApplicationController
     sso.sso_secret = configatron.sso.secret
     sso.sso_url = sso.return_sso_url
 
+    sso.require_activation = configatron.sso.require_activation
+
     if configatron.custom_field.username
       sso.custom_fields["orig_username"] = username
     end

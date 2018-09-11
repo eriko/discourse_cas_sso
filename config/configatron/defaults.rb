@@ -10,6 +10,8 @@
 
 configatron.sso.login.path = '/session/sso_login'
 configatron.sso.secret = 'ToTX`#TLy@ioR^exPKb@&sfyD'
+configatron.sso.require_activation = false            # must set to true if not all CAS email addresses are trusted / validated by your CAS server
+                                                      # https://meta.discourse.org/t/official-single-sign-on-for-discourse-sso/13045
 
 configatron.sso.suppress_welcome_message = false
 
