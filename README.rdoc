@@ -1,5 +1,5 @@
 ===ABANDONED
-There will be no updates to this app every again by me.  If you like to take over the project I will happily move it to you.
+There will be no updates to this app ever again by me.  If you would like to take over the project I will happily move it to you.
 
 
 == Discourse CAS sso app
